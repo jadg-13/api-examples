@@ -23,7 +23,7 @@ public class Estudiante {
     @Column(name = "carnet", nullable = false, unique = true, length = 20)
     private String carnet;
 
-    @Column(name = "nombres", nullable = false, length = 120)
+    @Column( nullable = false, length = 120)
     private String nombres;
 
     @Column(name = "apellidos", nullable = false, length = 120)
@@ -34,7 +34,7 @@ public class Estudiante {
 
     private LocalDate fechaNacimiento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_carrera", nullable = false)
     private Carrera carrera;
 }
