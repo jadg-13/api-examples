@@ -20,24 +20,24 @@ public class EstudianteSpecification {
 
             if (nombre != null && !nombre.isEmpty()) {
                 predicates = cb.and(predicates,
-                        cb.like(cb.lower(root.get("nombres")), "%" + nombre.toLowerCase() + "%"));
+                        cb.like(cb.lower(root.get("nombres")), "%" + nombre.trim().toLowerCase() + "%"));
             }
 
             if (apellido != null && !apellido.isEmpty()) {
                 predicates = cb.and(predicates,
-                        cb.like(cb.lower(root.get("apellidos")), "%" + apellido.toLowerCase() + "%"));
+                        cb.like(cb.lower(root.get("apellidos")), "%" + apellido.trim().toLowerCase() + "%"));
             }
 
             if (codigoCarrera != null && !codigoCarrera.isEmpty()) {
                 predicates = cb.and(predicates,
                         //cb.equal(cb.lower(carreraJoin.get("codigo")), codigoCarrera.toLowerCase()));
-                        cb.like(cb.lower(carreraJoin.get("codigo")), "%" + codigoCarrera.toLowerCase() + "%"));
+                        cb.like(cb.lower(carreraJoin.get("codigo")), "%" + codigoCarrera.trim().toLowerCase() + "%"));
             }
 
             if (codigoFacultad != null && !codigoFacultad.isEmpty()) {
                 predicates = cb.and(predicates,
                         //cb.equal(cb.lower(facultadJoin.get("codigo")), codigoFacultad.toLowerCase()));
-                        cb.like(cb.lower(facultadJoin.get("codigo")), "%" + codigoFacultad.toLowerCase() + "%"));
+                        cb.like(cb.lower(facultadJoin.get("codigo")), "%" + codigoFacultad.trim().toLowerCase() + "%"));
             }
 
             return predicates;

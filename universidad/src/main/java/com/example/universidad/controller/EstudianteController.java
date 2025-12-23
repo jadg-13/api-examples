@@ -2,6 +2,7 @@ package com.example.universidad.controller;
 
 import com.example.universidad.model.Estudiante;
 import com.example.universidad.service.EstudianteService;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,19 @@ public class EstudianteController {
     ) {
         return service.buscar(nombre, apellido, carrera, facultad);
     }
+
+    @GetMapping("/paginar")
+    public Page<Estudiante> buscar(
+            @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String apellido,
+            @RequestParam(required = false) String carrera,
+            @RequestParam(required = false) String facultad,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return service.buscar(nombre, apellido, carrera, facultad, page, size);
+    }
+
 
 
     @PostMapping
